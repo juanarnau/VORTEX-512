@@ -3,14 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <title>VORTEX-512</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: sans-serif; padding: 2rem; background: #f4f4f4; }
-    h1 { color: #2c3e50; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+    h1 {
+      color: #2c3e50;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    p.subtitle {
+      font-size: 1.2rem;
+      color: #555;
+    }
+    section {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #007acc;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
   </style>
 </head>
 <body>
-  <h1>Bienvenido a VORTEX-512</h1>
-  <p>Procesamiento científico optimizado para AVX-512.</p>
-  <p>Descarga la última versión desde la <a href="https://github.com/juanarnau/VORTEX-512/releases">sección de releases</a>.</p>
+  <header>
+    <h1>VORTEX-512</h1>
+    <p class="subtitle">Procesamiento científico optimizado para AVX-512</p>
+  </header>
+
+  <section>
+    <h2>¿Qué es VORTEX-512?</h2>
+    <p>Una aplicación de alto rendimiento diseñada para análisis científicos intensivos. Aprovecha las instrucciones AVX-512 para acelerar cálculos complejos y manejar grandes volúmenes de datos con eficiencia.</p>
+
+    <h2>Descargas</h2>
+    <p>La última versión compilada está disponible en la sección de releases de GitHub:</p>
+    <a class="button" href="https://github.com/juanarnau/VORTEX-512/releases">Ir a Releases</a>
+
+    <h2>Documentación</h2>
+    <p>Consulta el <a href="https://github.com/juanarnau/VORTEX-512/blob/main/README.md">README del proyecto</a> para instrucciones de instalación, dependencias y uso.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Juan Arnau · Proyecto VORTEX-512
+  </footer>
 </body>
 </html>
