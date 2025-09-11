@@ -1,25 +1,25 @@
 # VORTEX-512 🚀
 
-**VORTEX-512** es una aplicación de procesamiento científico optimizada para arquitecturas AVX-512. Diseñada para investigadores, ingenieros y entusiastas del rendimiento, permite ejecutar análisis intensivos con precisión y velocidad.
+**VORTEX-512** es una suite de cifrado avanzada diseñada para proteger archivos y carpetas mediante algoritmos personalizados de alta seguridad. Desarrollada para entornos donde la confidencialidad y la integridad de los datos son críticas.
 
 ---
 
-## 🧠 Características principales
+## 🧩 ¿Qué hace VORTEX-512?
 
-- ✅ Optimización para AVX-512 en CPUs modernas
-- 🧪 Procesamiento de datos científicos de alta densidad
-- 🖥️ Interfaz gráfica ligera y funcional
-- 📊 Exportación de resultados en múltiples formatos
-- 🔌 Modularidad para integrar nuevos algoritmos fácilmente
+- 🔒 **Cifra archivos individuales** con algoritmos propios
+- 📁 **Cifra carpetas completas**, incluyendo subdirectorios
+- 🔓 **Descifra contenido** de forma rápida y segura
+- 🧠 Utiliza algoritmos desarrollados específicamente para esta suite
+- 🖥️ Interfaz gráfica intuitiva para usuarios técnicos y no técnicos
 
 ---
 
 ## 🛠️ Tecnologías utilizadas
 
 - **Python 3.11**
-- **NumPy**, **SciPy**, **PyQt**
-- **Intel MKL** para cálculos vectorizados
-- **PyInstaller** para generación de ejecutables
+- **PyQt** para la interfaz gráfica
+- Algoritmos de cifrado desarrollados desde cero
+- Soporte para estructuras de archivos complejas
 
 ---
 
