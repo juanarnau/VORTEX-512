@@ -72,9 +72,20 @@ Para colaboraciones o licencias comerciales, contacta con: juan.arnau@outlook.es
 
 ---
 
-## 🤝 Contribuciones
+## 🤝 Colaboraciones
+
+Se aceptan contribuciones al proyecto VORTEX-512 bajo las siguientes condiciones:
+
+- Toda aportación será revisada y aprobada por el autor antes de su integración.
+- Las contribuciones no implican cesión de derechos ni propiedad intelectual sobre el proyecto principal.
+- El autor se reserva el derecho de modificar, rechazar o adaptar cualquier propuesta.
+- Los colaboradores no podrán reutilizar el código del proyecto en otros desarrollos sin autorización expresa.
+
+Al enviar una contribución, el desarrollador acepta estas condiciones y reconoce que su participación no otorga derechos de explotación ni uso comercial del software.
+
 ¡Las contribuciones son bienvenidas! Puedes abrir issues, enviar pull requests o proponer mejoras en la documentación.
 
+Para propuestas de colaboración formal, contactar a: juan.arnau@outlook.es
 
 
 
