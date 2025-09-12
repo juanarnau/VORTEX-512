@@ -63,7 +63,12 @@ Juan Arnau
 ---
 
 ## 📄 Licencia
-Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
+Este proyecto está protegido por una licencia de uso restringido.  
+Queda prohibido el uso comercial, la distribución o modificación sin autorización expresa del autor.
+
+Consulta el archivo [`LICENSE`](LICENSE) para leer los términos completos.
+
+Para colaboraciones o licencias comerciales, contacta con: juan.arnau@outlook.es
 
 ---
 
