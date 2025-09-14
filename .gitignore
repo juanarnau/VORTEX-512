@@ -9,6 +9,7 @@ venv/
 env/
 ENV/
 .vscode/
+*.txt
 
 # Archivos de configuración local
 *.log

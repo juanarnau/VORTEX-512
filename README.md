@@ -42,7 +42,7 @@ pytest tests/
 ## 🌐 Página del proyecto
 Puedes visitar la web oficial del proyecto haciendo clic en el logo:
 
-[<img src="docs/assets/logo.png" alt="VORTEX-512" width="100">](https://juanarnau.github.io/VORTEX-512)
+[![VORTEX-512](docs/assets/logo.png)](https://juanarnau.github.io/VORTEX-512)
 
 ---
 
