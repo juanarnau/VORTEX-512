@@ -9,7 +9,6 @@ venv/
 env/
 ENV/
 .vscode/
-*.txt
 
 # Archivos de configuración local
 *.log
@@ -32,3 +31,10 @@ Thumbs.db
 *.key
 *.pem
 *.enc
+
+# Ignorar archivos .txt temporales o de prueba
+*.txt
+
+# Pero incluir requirements.txt explícitamente
+!requirements.txt
+
