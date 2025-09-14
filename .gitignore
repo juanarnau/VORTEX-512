@@ -1,0 +1,33 @@
+# Archivos de Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+.vscode/
+
+# Archivos de configuración local
+*.log
+*.sqlite3
+*.db
+*.bak
+
+# Archivos de compilación
+*.exe
+*.spec
+build/
+dist/
+*.egg-info/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Claves o configuraciones sensibles (si las usas)
+*.key
+*.pem
+*.enc
