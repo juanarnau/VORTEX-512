@@ -2,6 +2,8 @@ import customtkinter as ctk
 from tkinterdnd2 import TkinterDnD
 from vortex_gui.gui import VortexApp
 import tkinter as tk
+from PIL import Image, ImageTk
+import os
 
 class DnDApp(TkinterDnD.Tk):
     def __init__(self):
@@ -18,7 +20,21 @@ def show_splash(root):
     splash.configure(fg_color="#0a1f44")
     splash.attributes("-alpha", 0.0)
 
-    ctk.CTkLabel(splash, text="VORTEX-512", font=("Segoe UI", 28, "bold"), text_color="white").pack(pady=(60, 10))
+    # Ruta al logo
+    logo_path = os.path.join("docs", "assets", "logo.png")
+
+    try:
+        image = Image.open(logo_path)
+        image = image.resize((100, 100))  # Ajusta el tamaño según tu diseño
+        logo = ImageTk.PhotoImage(image)
+
+        logo_label = tk.Label(splash, image=logo, bg="#0a1f44")
+        logo_label.image = logo  # Evita que el recolector de basura lo elimine
+        logo_label.pack(pady=(30, 10))
+    except Exception as e:
+        print(f"No se pudo cargar el logo: {e}")
+
+    ctk.CTkLabel(splash, text="VORTEX-512", font=("Segoe UI", 28, "bold"), text_color="white").pack(pady=(10, 5))
     ctk.CTkLabel(splash, text="Protegiendo tus datos desde el núcleo", font=("Segoe UI", 16), text_color="#cccccc").pack()
 
     def fade_in():
