@@ -36,6 +36,14 @@ def show_splash(root):
 
     ctk.CTkLabel(splash, text="VORTEX-512", font=("Segoe UI", 28, "bold"), text_color="white").pack(pady=(10, 5))
     ctk.CTkLabel(splash, text="Protegiendo tus datos desde el núcleo", font=("Segoe UI", 16), text_color="#cccccc").pack()
+    # Copyright debajo
+    tk.Label(splash, text="© Juan Arnau 2025", font=("Segoe UI", 10), fg="#cccccc", bg="#0a1f44").pack(pady=(20, 5))
+
+    def fade_in():
+        alpha = splash.attributes("-alpha")
+        if alpha < 1.0:
+            splash.attributes("-alpha", alpha + 0.05)
+            splash.after(30, fade_in)
 
     def fade_in():
         alpha = splash.attributes("-alpha")

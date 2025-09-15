@@ -31,7 +31,6 @@ class VortexApp:
         # Frame izquierdo para el logo y texto
         logo_frame = tk.Frame(main_container, bg="#0a1f44")
         logo_frame.pack(side="left", fill="y", padx=10, pady=10)
-
         # Cargar imagen del logo
         logo_path = os.path.join("docs", "assets", "logo.png")
         image = Image.open(logo_path)
@@ -41,7 +40,6 @@ class VortexApp:
         logo_label = tk.Label(logo_frame, image=logo, bg="#0a1f44")
         logo_label.image = logo
         logo_label.pack(pady=(20, 5))
-
         # Texto debajo del logo
         text_label = tk.Label(logo_frame, text="Vortex-512", font=("Segoe UI", 14, "bold"), fg="white", bg="#0a1f44")
         text_label.pack()
@@ -65,7 +63,15 @@ class VortexApp:
 
         # Botón de salida
         ctk.CTkButton(content_frame, text="❌ Salir", command=self.root.quit).pack(pady=5)
-
+       # Texto de copyright en la parte inferior
+        anchor_label = tk.Label(
+            content_frame,
+            text="© Juan Arnau 2025",
+            font=("Segoe UI", 10, "italic"),
+            fg="#cccccc",
+            bg="#0a1f44"
+        )
+        anchor_label.pack(side="bottom", pady=(10, 5), anchor="center")
 
     # Métodos para archivos
     def cifrar_archivo(self):
