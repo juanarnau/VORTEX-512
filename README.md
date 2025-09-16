@@ -80,7 +80,7 @@ Puedes visitar la web oficial del proyecto haciendo clic en el logo:
 git clone https://github.com/juanarnau/VORTEX-512.git
 cd VORTEX-512
 pip install -r requirements.txt
-python run_gui.py
+python main.py
 ```
 ---
 
