@@ -25,26 +25,26 @@
 
 **VORTEX-512** emplea una combinación de algoritmos modernos y seguros para garantizar la confidencialidad e integridad de los datos:
  
-    🛡️ Seguridad aplicada
-        - Cifrado simétrico fuerte: AES-128 en modo CBC con IV aleatorio
-        - Autenticación de datos: HMAC incluido en cada token Fernet
-        - Protección contra ataques de diccionario: PBKDF2 con 100.000 iteraciones
-        - Separación de claves: Cada contraseña genera una clave única
-        - Evita doble cifrado: Archivos .encrypted no se vuelven a cifrar
+🛡️ Seguridad aplicada
+- Cifrado simétrico fuerte: AES-128 en modo CBC con IV aleatorio
+- Autenticación de datos: HMAC incluido en cada token Fernet
+- Protección contra ataques de diccionario: PBKDF2 con 100.000 iteraciones
+- Separación de claves: Cada contraseña genera una clave única
+- Evita doble cifrado: Archivos .encrypted no se vuelven a cifrar
 
 ## 📦 Aplicaciones del cifrado
 
-        - Cifrado y descifrado de archivos individuales
-        - Cifrado de carpetas completas con recorrido recursivo
-        - Validación de contraseña doble para cifrado
-        - Interfaz gráfica intuitiva con CustomTkinte
+- Cifrado y descifrado de archivos individuales
+- Cifrado de carpetas completas con recorrido recursivo
+- Validación de contraseña doble para cifrado
+- Interfaz gráfica intuitiva con CustomTkinte
 
 ---
 
 ## 📌 Recomendaciones
 
-        - Usar contraseñas largas y únicas
-        - No compartir contraseñas por canales inseguros
+- Usar contraseñas largas y únicas
+- No compartir contraseñas por canales inseguros
 
 ---
 
