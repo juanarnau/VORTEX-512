@@ -11,6 +11,7 @@ from vortex.folder_crypto import encrypt_folder, decrypt_folder
 from PIL import Image, ImageTk
 import os
 import tkinter as tk
+from utils import resource_path  
 
 class VortexApp:
     def __init__(self, root):

@@ -4,7 +4,10 @@ from vortex_gui.gui import VortexApp
 import tkinter as tk
 from PIL import Image, ImageTk
 import os
+import sys
 import ctypes
+from utils import resource_path
+
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("vortex512.juanarnau.suite")
 
 class DnDApp(TkinterDnD.Tk):
@@ -21,12 +24,12 @@ def show_splash(root):
     splash.overrideredirect(True)
     splash.configure(fg_color="#0a1f44")
     splash.attributes("-alpha", 0.0)
-    splash.iconbitmap("docs/assets/vortex.ico")  # Aplica el ícono también al splash
+    #splash.iconbitmap(resource_path("docs/assets/vortex.ico"))  # Aplica el ícono también al splash
     # Ruta al logo
     logo_path = os.path.join("docs", "assets", "logo.png")
 
     try:
-        image = Image.open(logo_path)
+        image = Image.open(resource_path(logo_path))
         image = image.resize((100, 100))  # Ajusta el tamaño según tu diseño
         logo = ImageTk.PhotoImage(image)
 
@@ -66,8 +69,7 @@ def launch_gui():
 
     root = DnDApp()
     root.withdraw()  # Oculta la ventana principal
-    root.wm_iconbitmap("docs/assets/vortex.ico")  # Aplica el ícono antes de mostrar
-
+    root.wm_iconbitmap(resource_path("docs/assets/vortex.ico"))    # Aplica el ícono antes de mostrar
 
     show_splash(root)  # Muestra el splash
 
