@@ -20,7 +20,7 @@ class VortexApp:
         self.root.geometry("600x400")
         self.build_interface()
         try:
-            self.root.iconbitmap("docs/assets/logo.ico")
+            self.root.iconbitmap(resource_path("docs/assets/logo.ico"))
         except:
             pass
 
@@ -33,14 +33,17 @@ class VortexApp:
         logo_frame = tk.Frame(main_container, bg="#0a1f44")
         logo_frame.pack(side="left", fill="y", padx=10, pady=10)
         # Cargar imagen del logo
-        logo_path = os.path.join("docs", "assets", "logo.png")
-        image = Image.open(logo_path)
-        image = image.resize((80, 80))
-        logo = ImageTk.PhotoImage(image)
+        try:
+            logo_path = resource_path("docs/assets/logo.png")
+            image = Image.open(logo_path)
+            image = image.resize((80, 80))
+            logo = ImageTk.PhotoImage(image)
+            logo_label = tk.Label(logo_frame, image=logo, bg="#0a1f44")
+            logo_label.image = logo
+            logo_label.pack(pady=(20, 5))
+        except Exception as e:
+            print(f"Error al cargar logo: {e}")
 
-        logo_label = tk.Label(logo_frame, image=logo, bg="#0a1f44")
-        logo_label.image = logo
-        logo_label.pack(pady=(20, 5))
         # Texto debajo del logo
         text_label = tk.Label(logo_frame, text="Vortex-512", font=("Segoe UI", 14, "bold"), fg="white", bg="#0a1f44")
         text_label.pack()

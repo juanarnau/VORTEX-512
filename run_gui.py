@@ -29,7 +29,7 @@ def show_splash(root):
     logo_path = os.path.join("docs", "assets", "logo.png")
 
     try:
-        image = Image.open(resource_path(logo_path))
+        image = Image.open(resource_path("docs/assets/logo.png"))
         image = image.resize((100, 100))  # Ajusta el tamaño según tu diseño
         logo = ImageTk.PhotoImage(image)
 
@@ -69,7 +69,7 @@ def launch_gui():
 
     root = DnDApp()
     root.withdraw()  # Oculta la ventana principal
-    root.wm_iconbitmap(resource_path("docs/assets/vortex.ico"))    # Aplica el ícono antes de mostrar
+    root.iconbitmap(resource_path("docs/assets/vortex.ico"))    # Aplica el ícono antes de mostrar
 
     show_splash(root)  # Muestra el splash
 
