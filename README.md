@@ -31,6 +31,9 @@ La última versión compilada está disponible en la página de releases. Incluy
 ---
 
 ## 📸 Capturas de pantalla
+![alt text](image.png)
+
+![alt text](image-1.png)
 
 ---
 
