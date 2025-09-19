@@ -73,15 +73,15 @@ print(decrypted.decode())  # → "mensaje secreto"
 ```
 
 ## 🧪 Pruebas unitarias
-VORTEX-512 incluye una batería de pruebas automatizadas para garantizar la fiabilidad del cifrado, la autenticación y la reversibilidad de los datos. Las pruebas están escritas con unittest y cubren tanto archivos individuales como carpetas completas.
+VORTEX-512 incluye una batería de pruebas automatizadas para garantizar la fiabilidad del cifrado, la autenticación y la reversibilidad de los datos. Las pruebas están escritas con unittest y cubren tanto archivos individuales como carpetas completas.  
 🔍 Cobertura de pruebas
-|  |  |  | 
-| test_encrypt_decrypt |  |  | 
-| test_authentication_failure |  |  | 
-| test_padding_unpadding |  |  | 
-| test_sbox_reversibility |  |  | 
-| test_encrypt_decrypt_folder |  |  | 
-| test_authentication_failure_folder |  |  | 
+ 
+- test_encrypt_decrypt
+- test_authentication_failure
+- test_padding_unpadding
+- test_sbox_reversibility
+- test_encrypt_decrypt_folder
+- test_authentication_failure_folder
 
 
 ## 📂 Ubicación
