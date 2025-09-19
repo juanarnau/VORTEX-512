@@ -1,9 +1,9 @@
 import customtkinter as ctk
 from tkinter import filedialog
-'''from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.backends import default_backend
-import base64'''
+import base64
 from CTkMessagebox import CTkMessagebox
 from vortex.file_crypto import encrypt_file, decrypt_file
 from vortex.folder_crypto import encrypt_folder, decrypt_folder
@@ -81,46 +81,71 @@ class VortexApp:
 
     # Métodos para archivos
     def cifrar_archivo(self):
-        file_path = filedialog.askopenfilename()
+        file_path = filedialog.askopenfilename(title="Selecciona archivo a cifrar")
         if not file_path:
             return
         password = self.obtener_contraseña_confirmada()
         if not password:
-            print("Contraseña no válida o cancelada")
             return
         try:
             key = self.derive_key_from_password(password)
-            fernet = Fernet(key)
             with open(file_path, "rb") as f:
                 data = f.read()
             encrypted = vortex_cipher.vortex_encrypt(data, key)
-            with open(file_path + ".vortex", "wb") as f:
+            output_path = file_path + ".vortex"
+            with open(output_path, "wb") as f:
                 f.write(encrypted)
-
-            CTkMessagebox(title="Éxito", message="Archivo cifrado correctamente", icon="check")
+            CTkMessagebox(
+                title="✅ Archivo cifrado",
+                message=f"Archivo cifrado correctamente:\n{os.path.basename(output_path)}",
+                icon="check"
+            )
         except Exception as e:
-            ctk.CTkMessagebox(title="Error", message=str(e), icon="cancel")
+            CTkMessagebox(
+                title="Error",
+                message=f"Error al cifrar archivo:\n{str(e)}",
+                icon="cancel"
+            )
 
     def descifrar_archivo(self):
         file_path = filedialog.askopenfilename(title="Selecciona archivo cifrado")
         if not file_path:
             return
+
         password = self.obtener_contraseña()
         if not password:
             print("Contraseña no válida o cancelada")
             return
+
         try:
             key = self.derive_key_from_password(password)
-            fernet = Fernet(key)
             with open(file_path, "rb") as f:
                 encrypted_data = f.read()
-            decrypted = vortex_cipher.vortex_decrypt(encrypted_data, key)
-            output_path = file_path.replace(".vortex", "")
-            with open(output_path, "wb") as f:
-                f.write(decrypted)
-            CTkMessagebox(title="Éxito", message="Archivo descifrado correctamente", icon="check")
+
+            try:
+                decrypted = vortex_cipher.vortex_decrypt(encrypted_data, key)
+                output_path = file_path.replace(".vortex", "")
+                with open(output_path, "wb") as f:
+                    f.write(decrypted)
+
+                CTkMessagebox(
+                    title="✅ Autenticidad confirmada",
+                    message="El archivo es legítimo y ha sido descifrado correctamente.",
+                    icon="check"
+                )
+            except ValueError:
+                CTkMessagebox(
+                    title="❌ Autenticidad fallida",
+                    message="El archivo ha sido modificado o no es válido. Descifrado bloqueado.",
+                    icon="cancel"
+                )
+
         except Exception as e:
-            CTkMessagebox(title="Error", message=f"Descifrado fallido:\n{str(e)}", icon="cancel")
+            CTkMessagebox(
+                title="Error",
+                message=f"Error inesperado:\n{str(e)}",
+                icon="cancel"
+            )
 
     # Métodos para carpetas
     def cifrar_carpeta(self):
