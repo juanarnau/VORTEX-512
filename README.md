@@ -58,12 +58,18 @@ Aplicación
 Ejemplo de uso
 ```bash
 from vortex_core import vortex_cipher
+import os
+
+# Generar una clave de 512 bits (64 bytes)
+key = os.urandom(64)
 
 # Cifrar
 encrypted = vortex_cipher.vortex_encrypt(b"mensaje secreto", key)
 
 # Descifrar (verifica autenticidad)
 decrypted = vortex_cipher.vortex_decrypt(encrypted, key)
+
+print(decrypted.decode())  # → "mensaje secreto"
 ```
 
 ## 🧪 Pruebas unitarias
