@@ -41,6 +41,63 @@
 
 ---
 
+## 🔐 Autenticación de Datos con HMAC-SHA256
+VORTEX-512 ahora incluye autenticación criptográfica para garantizar la integridad de los datos cifrados. Esto significa que cualquier manipulación o corrupción de los archivos cifrados será detectada automáticamente durante el descifrado.
+¿Cómo funciona?
+- Se utiliza HMAC-SHA256 para generar un código de autenticación único para cada archivo cifrado.
+- Este código se añade al final del archivo cifrado.
+- Durante el descifrado, se recalcula el HMAC y se compara con el original.
+- Si los datos han sido alterados, el sistema lanza un error y bloquea el descifrado.
+Beneficios
+- 🛡️ Protección contra manipulación maliciosa o accidental
+- ✅ Verificación automática de integridad
+- 🔒 Seguridad reforzada sin comprometer rendimiento
+Aplicación
+- Archivos individuales: el cifrado y descifrado ahora usan vortex_encrypt y vortex_decrypt, que incluyen autenticación.
+- Carpetas completas: las funciones encrypt_folder y decrypt_folder han sido actualizadas para aplicar autenticación a cada archivo .vortex.
+Ejemplo de uso
+```bash
+from vortex_core import vortex_cipher
+
+# Cifrar
+encrypted = vortex_cipher.vortex_encrypt(b"mensaje secreto", key)
+
+# Descifrar (verifica autenticidad)
+decrypted = vortex_cipher.vortex_decrypt(encrypted, key)
+```
+
+## 🧪 Pruebas unitarias
+VORTEX-512 incluye una batería de pruebas automatizadas para garantizar la fiabilidad del cifrado, la autenticación y la reversibilidad de los datos. Las pruebas están escritas con unittest y cubren tanto archivos individuales como carpetas completas.
+🔍 Cobertura de pruebas
+|  |  |  | 
+| test_encrypt_decrypt |  |  | 
+| test_authentication_failure |  |  | 
+| test_padding_unpadding |  |  | 
+| test_sbox_reversibility |  |  | 
+| test_encrypt_decrypt_folder |  |  | 
+| test_authentication_failure_folder |  |  | 
+
+
+## 📂 Ubicación
+Los tests se encuentran en la carpeta vortex_tests/ y pueden ejecutarse con:
+```bash
+python vortex_tests/test_vortex_cipher.py
+python vortex_tests/test_folder_crypto.py
+```
+
+También puedes usar pytest para ejecutar todos los tests:
+```bash
+pytest vortex_tests/
+```
+
+---
+
+## 📌 Requisitos
+- Python 3.10+
+- Paquetes: unittest, cryptography, customtkinter, Pillow
+
+---
+
 ## 📌 Recomendaciones
 
 - Usar contraseñas largas y únicas

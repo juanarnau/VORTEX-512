@@ -1,10 +1,9 @@
 import customtkinter as ctk
 from tkinter import filedialog
-from cryptography.fernet import Fernet
-from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+'''from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.backends import default_backend
-import base64
+import base64'''
 from CTkMessagebox import CTkMessagebox
 from vortex.file_crypto import encrypt_file, decrypt_file
 from vortex.folder_crypto import encrypt_folder, decrypt_folder
@@ -12,6 +11,9 @@ from PIL import Image, ImageTk
 import os
 import tkinter as tk
 from utils import resource_path  
+from vortex_core import vortex_cipher
+from vortex.folder_crypto import encrypt_folder
+from vortex.folder_crypto import decrypt_folder
 
 class VortexApp:
     def __init__(self, root):
@@ -91,9 +93,10 @@ class VortexApp:
             fernet = Fernet(key)
             with open(file_path, "rb") as f:
                 data = f.read()
-            encrypted = fernet.encrypt(data)
-            with open(file_path + ".encrypted", "wb") as f:
+            encrypted = vortex_cipher.vortex_encrypt(data, key)
+            with open(file_path + ".vortex", "wb") as f:
                 f.write(encrypted)
+
             CTkMessagebox(title="Éxito", message="Archivo cifrado correctamente", icon="check")
         except Exception as e:
             ctk.CTkMessagebox(title="Error", message=str(e), icon="cancel")
@@ -111,9 +114,8 @@ class VortexApp:
             fernet = Fernet(key)
             with open(file_path, "rb") as f:
                 encrypted_data = f.read()
-            decrypted = fernet.decrypt(encrypted_data)
-            # Guardar archivo descifrado
-            output_path = file_path.replace(".encrypted", "")
+            decrypted = vortex_cipher.vortex_decrypt(encrypted_data, key)
+            output_path = file_path.replace(".vortex", "")
             with open(output_path, "wb") as f:
                 f.write(decrypted)
             CTkMessagebox(title="Éxito", message="Archivo descifrado correctamente", icon="check")
@@ -122,7 +124,6 @@ class VortexApp:
 
     # Métodos para carpetas
     def cifrar_carpeta(self):
-        import os
         folder_path = filedialog.askdirectory(title="Selecciona carpeta a cifrar")
         if not folder_path:
             return
@@ -131,21 +132,7 @@ class VortexApp:
             return
         try:
             key = self.derive_key_from_password(password)
-            fernet = Fernet(key)
-            archivos_cifrados = 0
-            for root, _, files in os.walk(folder_path):
-                for file in files:
-                    file_path = os.path.join(root, file)
-                    # Evitar cifrar archivos ya cifrados
-                    if file_path.endswith(".encrypted"):
-                        continue
-                    with open(file_path, "rb") as f:
-                        data = f.read()
-                    encrypted_data = fernet.encrypt(data)
-                    encrypted_path = file_path + ".encrypted"
-                    with open(encrypted_path, "wb") as f:
-                        f.write(encrypted_data)
-                    archivos_cifrados += 1
+            archivos_cifrados = encrypt_folder(folder_path, key)
             if archivos_cifrados > 0:
                 CTkMessagebox(
                     title="Éxito",
@@ -164,7 +151,6 @@ class VortexApp:
                 message=f"Error al cifrar carpeta:\n{str(e)}",
                 icon="cancel"
             )
-
     def descifrar_carpeta(self):
         folder_path = filedialog.askdirectory(title="Selecciona carpeta cifrada")
         if not folder_path:
@@ -174,8 +160,7 @@ class VortexApp:
             return
         try:
             key = self.derive_key_from_password(password)
-            fernet = Fernet(key)
-            archivos = decrypt_folder(folder_path, fernet)
+            archivos = decrypt_folder(folder_path, key)
             if archivos > 0:
                 CTkMessagebox(title="Éxito", message=f"{archivos} archivos descifrados correctamente", icon="check")
             else:

@@ -6,10 +6,6 @@ def validate_input_file(path: str) -> bool:
     """Verifica que el archivo de entrada exista y sea legible."""
     return os.path.isfile(path)
 
-def suggest_encrypted_name(path: str) -> str:
-    """Sugiere un nombre de salida con extensión .jvtex."""
-    return path + ".jvtex"
-
 def suggest_decrypted_name(path: str) -> str:
     """Sugiere un nombre para el archivo descifrado."""
     if path.endswith(".jvtex"):
