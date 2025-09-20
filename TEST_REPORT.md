@@ -1,8 +1,8 @@
-# 🧪 Informe de Pruebas — VORTEX-512
+# 🧪 Informe de Pruebas — Zipherion-512
 
 **Fecha:** 19 de septiembre de 2025  
 **Autor:** Juan Arnau  
-**Versión del sistema:** VORTEX-512 con autenticación HMAC-SHA256
+**Versión del sistema:** Zipherion-512 con autenticación HMAC-SHA256
 
 ---
 
