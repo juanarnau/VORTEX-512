@@ -1,10 +1,10 @@
-# VORTEX-512 🚀
+# Zipherion-512 🚀
 
-**VORTEX-512** es una suite de cifrado avanzada diseñada para proteger archivos y carpetas mediante algoritmos personalizados de alta seguridad. Desarrollada para entornos donde la confidencialidad y la integridad de los datos son críticas.
+**Zipherion-512** es una suite de cifrado avanzada diseñada para proteger archivos y carpetas mediante algoritmos personalizados de alta seguridad. Desarrollada para entornos donde la confidencialidad y la integridad de los datos son críticas.
 
 ---
 
-## 🧩 ¿Qué hace VORTEX-512?
+## 🧩 ¿Qué hace Zipherion-512?
 
 - 🔒 **Cifra archivos individuales** con algoritmos propios
 - 📁 **Cifra carpetas completas**, incluyendo subdirectorios
@@ -23,7 +23,7 @@
 
 ## 🔐 Algoritmos de Cifrado Utilizados
 
-**VORTEX-512** emplea una combinación de algoritmos modernos y seguros para garantizar la confidencialidad e integridad de los datos:
+**Zipherion-512** emplea una combinación de algoritmos modernos y seguros para garantizar la confidencialidad e integridad de los datos:
  
 🛡️ Seguridad aplicada
 - Cifrado simétrico fuerte: AES-128 en modo CBC con IV aleatorio
@@ -42,7 +42,7 @@
 ---
 
 ## 🔐 Autenticación de Datos con HMAC-SHA256
-VORTEX-512 ahora incluye autenticación criptográfica para garantizar la integridad de los datos cifrados. Esto significa que cualquier manipulación o corrupción de los archivos cifrados será detectada automáticamente durante el descifrado.
+Zipherion-512 ahora incluye autenticación criptográfica para garantizar la integridad de los datos cifrados. Esto significa que cualquier manipulación o corrupción de los archivos cifrados será detectada automáticamente durante el descifrado.
 ¿Cómo funciona?
 - Se utiliza HMAC-SHA256 para generar un código de autenticación único para cada archivo cifrado.
 - Este código se añade al final del archivo cifrado.
@@ -73,7 +73,7 @@ print(decrypted.decode())  # → "mensaje secreto"
 ```
 
 ## 🧪 Pruebas unitarias
-VORTEX-512 incluye una batería de pruebas automatizadas para garantizar la fiabilidad del cifrado, la autenticación y la reversibilidad de los datos. Las pruebas están escritas con unittest y cubren tanto archivos individuales como carpetas completas.  
+Zipherion-512 incluye una batería de pruebas automatizadas para garantizar la fiabilidad del cifrado, la autenticación y la reversibilidad de los datos. Las pruebas están escritas con unittest y cubren tanto archivos individuales como carpetas completas.  
 🔍 Cobertura de pruebas
  
 - test_encrypt_decrypt
@@ -112,7 +112,7 @@ pytest vortex_tests/
 ---
 
 ## 📥 Descargas
-La última versión compilada está disponible en la página de releases. Incluye el instalador VORTEX-512-Setup.exe y los componentes necesarios para ejecución en Windows.
+La última versión compilada está disponible en la página de releases. Incluye el instalador Zipherion-512-Setup.exe y los componentes necesarios para ejecución en Windows.
 
 ⚠️ Nota: Los binarios (.exe y .dll) no están incluidos en el repositorio. Puedes descargarlos desde la sección de Releases.
 
@@ -133,15 +133,15 @@ pytest tests/
 ## 🌐 Página del proyecto
 Puedes visitar la web oficial del proyecto haciendo clic en el logo:
 
-[![VORTEX-512](docs/assets/logo.png)](https://juanarnau.github.io/VORTEX-512)
+[![Zipherion-512](docs/assets/logo.png)](https://juanarnau.github.io/Zipherion-512)
 
 ---
 
 ## 📦 Instalación
 
 ```bash
-git clone https://github.com/juanarnau/VORTEX-512.git
-cd VORTEX-512
+git clone https://github.com/juanarnau/Zipherion-512.git
+cd Zipherion-512
 pip install -r requirements.txt
 python main.py
 ```
@@ -165,7 +165,7 @@ Para colaboraciones o licencias comerciales, contacta con: juan.arnau@outlook.es
 
 ## 🤝 Colaboraciones
 
-Se aceptan contribuciones al proyecto VORTEX-512 bajo las siguientes condiciones:
+Se aceptan contribuciones al proyecto Zipherion-512 bajo las siguientes condiciones:
 
 - Toda aportación será revisada y aprobada por el autor antes de su integración.
 - Las contribuciones no implican cesión de derechos ni propiedad intelectual sobre el proyecto principal.
