@@ -39,7 +39,7 @@ def show_splash(root):
     except Exception as e:
         print(f"No se pudo cargar el logo: {e}")
 
-    ctk.CTkLabel(splash, text="VORTEX-512", font=("Segoe UI", 28, "bold"), text_color="white").pack(pady=(10, 5))
+    ctk.CTkLabel(splash, text="Zyphrix-512", font=("Segoe UI", 28, "bold"), text_color="white").pack(pady=(10, 5))
     ctk.CTkLabel(splash, text="Protegiendo tus datos desde el núcleo", font=("Segoe UI", 16), text_color="#cccccc").pack()
     # Copyright debajo
     tk.Label(splash, text="© Juan Arnau 2025", font=("Segoe UI", 10), fg="#cccccc", bg="#0a1f44").pack(pady=(20, 5))
