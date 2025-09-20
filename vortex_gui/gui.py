@@ -18,7 +18,7 @@ from vortex.folder_crypto import decrypt_folder
 class VortexApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Zyphrix 512 Encryption Suite")
+        self.root.title("Zipherion-512 Encryption Suite")
         self.root.geometry("600x400")
         self.build_interface()
         try:
@@ -47,7 +47,7 @@ class VortexApp:
             print(f"Error al cargar logo: {e}")
 
         # Texto debajo del logo
-        text_label = tk.Label(logo_frame, text="Zyphrix-512", font=("Segoe UI", 14, "bold"), fg="white", bg="#0a1f44")
+        text_label = tk.Label(logo_frame, text="Zipherion-512", font=("Segoe UI", 14, "bold"), fg="white", bg="#0a1f44")
         text_label.pack()
 
         # Frame derecho para la interfaz principal

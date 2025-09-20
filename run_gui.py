@@ -13,7 +13,7 @@ ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("vortex512.juanarn
 class DnDApp(TkinterDnD.Tk):
     def __init__(self):
         super().__init__()
-        self.title("VORTEX-512")
+        self.title("Zipherion-512")
         self.geometry("700x500")
         self.configure(bg="#0a1f44")  # Fondo oscuro manual
 
