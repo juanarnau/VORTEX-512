@@ -87,8 +87,8 @@ Zipherion-512 incluye una batería de pruebas automatizadas para garantizar la f
 ## 📂 Ubicación
 Los tests se encuentran en la carpeta vortex_tests/ y pueden ejecutarse con:
 ```bash
-python vortex_tests/test_vortex_cipher.py
-python vortex_tests/test_folder_crypto.py
+python -m vortex_tests.test_vortex_cipher
+python -m vortex_tests.test_folder_crypto
 ```
 
 También puedes usar pytest para ejecutar todos los tests:
