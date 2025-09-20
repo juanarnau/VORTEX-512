@@ -26,7 +26,6 @@ def encrypt_folder(folder_path: str, key: bytes) -> int:
             except Exception as e:
                 print(f"❌ Error al cifrar {file_path}: {e}")
     return archivos_cifrados
-import os
 from vortex_core import vortex_cipher
 
 def decrypt_folder(folder_path: str, key: bytes) -> int:
