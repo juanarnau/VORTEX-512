@@ -14,6 +14,7 @@ from utils import resource_path
 from vortex_core import vortex_cipher
 from vortex.folder_crypto import encrypt_folder
 from vortex.folder_crypto import decrypt_folder
+import re
 
 class VortexApp:
     def __init__(self, root):
@@ -195,25 +196,158 @@ class VortexApp:
         except Exception as e:
             CTkMessagebox(title="Error", message=f"Descifrado fallido:\n{str(e)}", icon="cancel")
 
-    # Validación de contraseña doble
+    # Validación de contraseña doble con ocultación
     def obtener_contraseña_confirmada(self):
-        dialog1 = ctk.CTkInputDialog(text="Introduce tu contraseña", title="Cifrado por contraseña")
-        password1 = dialog1.get_input()
 
-        dialog2 = ctk.CTkInputDialog(text="Confirma tu contraseña", title="Confirmación")
-        password2 = dialog2.get_input()
+        ventana = ctk.CTkToplevel(self.root)
+        ventana.title("Cifrado por contraseña")
+        ventana.geometry("400x350")
+        ventana.grab_set()
 
-        if password1 and password2 and password1 == password2:
-            return password1
+        ctk.CTkLabel(ventana, text="Introduce tu contraseña:").pack(pady=10)
+        entrada = ctk.CTkEntry(ventana, show="*")
+        entrada.pack(pady=5)
+
+        requisitos = {
+            "longitud": ctk.CTkLabel(ventana, text="• Mínimo 8 caracteres", text_color="gray"),
+            "mayuscula": ctk.CTkLabel(ventana, text="• Al menos una mayúscula", text_color="gray"),
+            "numero": ctk.CTkLabel(ventana, text="• Al menos un número", text_color="gray"),
+            "simbolo": ctk.CTkLabel(ventana, text="• Al menos un símbolo", text_color="gray")
+        }
+
+        for req in requisitos.values():
+            req.pack(anchor="w", padx=20)
+
+        barra_fuerza = ctk.CTkProgressBar(ventana, width=200)
+        barra_fuerza.set(0)
+        barra_fuerza.pack(pady=5)
+
+        texto_fuerza = ctk.CTkLabel(ventana, text="Fuerza: ", text_color="gray")
+        texto_fuerza.pack()
+
+        resultado = {"valor": None}
+
+        def actualizar_requisitos(event=None):
+            pwd = entrada.get()
+            fuerza = 0
+
+            if len(pwd) >= 8:
+                requisitos["longitud"].configure(text_color="green")
+                fuerza += 1
+            else:
+                requisitos["longitud"].configure(text_color="gray")
+
+            if re.search(r"[A-Z]", pwd):
+                requisitos["mayuscula"].configure(text_color="green")
+                fuerza += 1
+            else:
+                requisitos["mayuscula"].configure(text_color="gray")
+
+            if re.search(r"[0-9]", pwd):
+                requisitos["numero"].configure(text_color="green")
+                fuerza += 1
+            else:
+                requisitos["numero"].configure(text_color="gray")
+
+            if re.search(r"[!@#$%^&*(),.?\":{}|<>]", pwd):
+                requisitos["simbolo"].configure(text_color="green")
+                fuerza += 1
+            else:
+                requisitos["simbolo"].configure(text_color="gray")
+
+            barra_fuerza.set(fuerza / 4)
+
+            if fuerza == 4:
+                texto_fuerza.configure(text="Fuerza: Fuerte", text_color="green")
+            elif fuerza == 3:
+                texto_fuerza.configure(text="Fuerza: Media", text_color="orange")
+            else:
+                texto_fuerza.configure(text="Fuerza: Débil", text_color="red")
+
+        entrada.bind("<KeyRelease>", actualizar_requisitos)
+
+        def confirmar():
+            pwd = entrada.get()
+            if (len(pwd) >= 8 and
+                re.search(r"[A-Z]", pwd) and
+                re.search(r"[0-9]", pwd) and
+                re.search(r"[!@#$%^&*(),.?\":{}|<>]", pwd)):
+                resultado["valor"] = pwd
+                ventana.destroy()
+            else:
+                CTkMessagebox(
+                    title="Contraseña débil",
+                    message="La contraseña no cumple todos los requisitos.",
+                    icon="warning"
+                )
+
+        ctk.CTkButton(ventana, text="Aceptar", command=confirmar).pack(pady=20)
+        self.root.wait_window(ventana)
+
+        if resultado["valor"]:
+            ventana_confirm = ctk.CTkToplevel(self.root)
+            ventana_confirm.title("Confirmación")
+            ventana_confirm.geometry("400x150")
+            ventana_confirm.grab_set()
+
+            ctk.CTkLabel(ventana_confirm, text="Confirma tu contraseña:").pack(pady=10)
+            entrada_confirm = ctk.CTkEntry(ventana_confirm, show="*")
+            entrada_confirm.pack(pady=5)
+
+            confirm_result = {"valor": None}
+
+            def confirmar_final():
+                if entrada_confirm.get() == resultado["valor"]:
+                    confirm_result["valor"] = resultado["valor"]
+                    ventana_confirm.destroy()
+                else:
+                    CTkMessagebox(title="Error", message="Las contraseñas no coinciden", icon="cancel")
+
+            ctk.CTkButton(ventana_confirm, text="Confirmar", command=confirmar_final).pack(pady=10)
+            self.root.wait_window(ventana_confirm)
+            return confirm_result["valor"]
         else:
-            ctk.CTkMessagebox(title="Error", message="Las contraseñas no coinciden", icon="cancel")
             return None
 
+    # Solicitar contraseña una sola vez con ocultación
+    def obtener_contraseña(self):
+        ventana = ctk.CTkToplevel(self.root)
+        ventana.title("Descifrado")
+        ventana.geometry("300x150")
+        ventana.grab_set()
+
+        label = ctk.CTkLabel(ventana, text="Introduce tu contraseña:")
+        label.pack(pady=10)
+
+        entrada = ctk.CTkEntry(ventana, show="*")
+        entrada.pack(pady=5)
+
+        resultado = {"valor": None}
+
+        def confirmar():
+            resultado["valor"] = entrada.get()
+            ventana.destroy()
+
+        ctk.CTkButton(ventana, text="Aceptar", command=confirmar).pack(pady=10)
+        self.root.wait_window(ventana)
+        return resultado["valor"]
 
     # Solo pedir una vez (para descifrado)
     def obtener_contraseña(self):
         dialog = ctk.CTkInputDialog(text="Introduce tu contraseña", title="Descifrado")
         return dialog.get_input()
+    
+    # Validar contraseña segura
+    def validar_contraseña_segura(self, password: str) -> bool:
+        if len(password) < 8:
+            return False
+        if not re.search(r"[A-Z]", password):
+            return False
+        if not re.search(r"[0-9]", password):
+            return False
+        if not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
+            return False
+        return True
 
     # Derivar clave desde contraseña
     def derive_key_from_password(self, password):
